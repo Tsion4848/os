@@ -81,8 +81,8 @@ void scan()
 			total = total + abs(nums[i]-initial);
 			initial = nums[i];
 		}
-		total = total + abs(nums[i+1] - nums[i]);
-		initial = nums[i+1];
+		total = total + abs(nums[i+1] - 0);
+		initial = 0;
 
 		for (i = index ; i < numReq ; i++)
 		{
@@ -103,13 +103,14 @@ int main()
 	printf("Insert your choice\n");
 	scanf("%d", choice);
 
+	printf("1: INPUT\n");
+	printf("2:SCAN\n");
+
 	switch(choice)
 	{
-		case 1: printf("1: INPUT\n");
-			input();
+		case 1: input();
 			break;
-		case 2: printf("2:SCAN\n");
-			scan();
+		case 2: scan();
 			break;
 		default: printf("Invalid input");
 	}
