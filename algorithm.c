@@ -10,7 +10,7 @@ void input()
 	printf("Enter the number of Tracks\n");
 	scanf("%d", &numReq);
 	printf("Enter initial head position\n");
-	scanf("%d", initial);
+	scanf("%d", &initial);
 	printf("Enter total disk size\n");
 	scanf("%d", &size);
 	printf("Enter the head movement direction, 1 for up and 0 for n down\n");
@@ -26,7 +26,7 @@ void sort()
 {
 	for (i = 0 ; i < numReq ; i++)
 	{
-		for (j = 0 ; j < i-1 ; j++)
+		for (j = 0 ; j < numReq-i-1 ; j++)
 		{
 			if (nums[j] > nums[j+1])
 			{
@@ -44,6 +44,9 @@ void sort();
 void scan()
 {
 	int index;
+
+	sort();
+
 	for (i = 0 ; i < numReq ; i++)
 	{
 		if (initial < nums[i])
@@ -53,9 +56,8 @@ void scan()
 		}
 	}
 
-	sort();
-
-	if (dir == 1){
+	if (dir == 1)
+	{
 		for (i = index ; i < numReq ; i++)
 		{
 			{
