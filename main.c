@@ -11,7 +11,7 @@ int main()
 	scanf("%d", choice);
 
 	printf("1: INPUT\n");
-	printf("2:SCAN\n");
+	printf("2: SCAN\n");
 
 	switch(choice)
 	{

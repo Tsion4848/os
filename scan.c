@@ -10,6 +10,7 @@ void scan()
 	int nums[100];
 	int index;
 
+	input();
         sort();
 
         for (i = 0 ; i < numReq ; i++)
