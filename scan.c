@@ -1,40 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
+/**
+ * scan - this is the algorithm to get the total time
+ * it takes to move
+ */
 
-int main()
+void scan()
 {
 	int i, j, head, dir, numReq, size, initial, total = 0;
 	int nums[100];
-
-	printf("Enter the number of Tracks\n");
-        scanf("%d", &numReq);
-        printf("Enter initial head position\n");
-        scanf("%d", &initial);
-        printf("Enter total disk size\n");
-        scanf("%d", &size);
-        printf("Enter the head movement direction, 1 for up and 0 for n down\n");
-        scanf("%d", &dir);
-        printf("Enter the requests sequence\n");
-        for (i = 0 ; i < numReq ; i++)
-        {
-                scanf("%d", &nums[i]);
-        }
-
-	for (i = 0 ; i < numReq ; i++)
-        {
-                for (j = 0 ; j < numReq-i-1 ; j++)
-                {
-                        if (nums[j] > nums[j+1])
-                        {
-                                int temp;
-                                temp = nums[j];
-                                nums[j] = nums[j+1];
-                                nums[j+1] = temp;
-                        }
-                }
-        }
-
 	int index;
+
+        sort();
 
         for (i = 0 ; i < numReq ; i++)
         {
@@ -49,7 +25,7 @@ int main()
         {
                 for (i = index ; i < numReq ; i++)
                 {
-                        {
+			{
                                 total = total + abs(nums[i]-initial);
                                 initial = nums[i];
                         }
@@ -80,5 +56,4 @@ int main()
                 }
         }
         printf("Total movement is %d", total);
-	return 0;
 }
