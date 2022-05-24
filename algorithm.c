@@ -103,9 +103,11 @@ int main()
 
 	switch(choice)
 	{
-		case 1: input();
+		case 1: printf("1: INPUT\n");
+			input();
 			break;
-		case 2: scan();
+		case 2: printf("2:SCAN\n");
+			scan();
 			break;
 		default: printf("Invalid input");
 	}
