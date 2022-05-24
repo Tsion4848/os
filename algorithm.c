@@ -37,7 +37,6 @@ void sort()
 			}
 		}
 	}
-	return 0;
 }
 
 void sort();
@@ -90,10 +89,10 @@ void scan()
 		}
 	}
 	printf("Total movement is %d", total);
-	return 0;
 }
 	
 void input();
+void scan();
 
 int main()
 {
