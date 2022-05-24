@@ -37,8 +37,6 @@ int main()
 
 	int index;
 
-        sort();
-
         for (i = 0 ; i < numReq ; i++)
         {
                 if (initial < nums[i])
