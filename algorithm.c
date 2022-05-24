@@ -37,6 +37,7 @@ void sort()
 			}
 		}
 	}
+	return 0;
 }
 
 void sort();
@@ -56,7 +57,7 @@ void scan()
 	sort();
 
 	if (dir == 1){
-		for (i = index ; i < n ; i++)
+		for (i = index ; i < numReq ; i++)
 		{
 			{
 				total = total + abs(nums[i]-initial);
@@ -93,7 +94,6 @@ void scan()
 }
 	
 void input();
-void scan();
 
 int main()
 {
@@ -110,6 +110,7 @@ int main()
 			break;
 		default: printf("Invalid input");
 	}
+	return 0;
 }
 
 
