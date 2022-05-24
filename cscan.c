@@ -3,7 +3,7 @@
 int main()
 {
 	int i, j, head, dir, numReq, size, initial, total = 0;
-	int nums[100]
+	int nums[100];
 	
 	printf("Enter the number of Tracks\n");
         scanf("%d", &numReq);
