@@ -1,60 +1,101 @@
 #include "main.h"
-/**
- * scan - this is the algorithm to get the total time
- * it takes to move
- */
-
-void scan()
+int main()
 {
-	int i, j, head, dir, numReq, size, initial, total = 0;
-	int nums[100];
-	int index;
+    int i, j, dir, numReq, size, initial, total = 0;
+    int nums[100];
 
-	input();
-        sort();
+//inserting from file
+    FILE *file = fopen("C:\\Users\\hp\\Desktop\\input.txt", "r");
+    int fnum[100];
 
-        for (i = 0 ; i < numReq ; i++)
+    int t = 0;
+    int num;
+    while (fscanf(file, "%d", &num) > 0)
+    {
+        fnum[t] = num;
+        t++;
+    }
+    fclose(file);
+
+    numReq = fnum[0];
+    initial = fnum[1];
+    size = fnum[2];
+    dir = fnum[3];
+
+    // printf("%d\n%d\n%d\n%d\n", numReq, initial, size, dir);
+
+    for (i = 0; i < numReq; i++)
+    {
+        nums[i] = fnum[i + 4];
+    }
+
+    printf("the requests are\n");
+    for (i = 0; i < numReq; i++)
+    {
+        printf("%d\n", nums[i]);
+    }
+
+// sort
+    for (i = 0; i < numReq; i++)
+    {
+        for (j = 0; j < numReq - i - 1; j++)
         {
-                if (initial < nums[i])
-                {
-                        index = i;
-                        break;
-                }
+            if (nums[j] > nums[j + 1])
+            {
+                int temp;
+                temp = nums[j];
+                nums[j] = nums[j + 1];
+                nums[j + 1] = temp;
+            }
+        }
+    }
+
+    int index;
+
+    for (i = 0; i < numReq; i++)
+    {
+        if (initial < nums[i])
+        {
+            index = i;
+            break;
+        }
+    }
+    if (dir == 1)
+    {
+        for (i = index; i < numReq; i++)
+        {
+            {
+                total = total + abs(nums[i] - initial);
+                initial = nums[i];
+            }
         }
 
-        if (dir == 1)
+        for (i = index - 1; i >= 0; i--)
         {
-                for (i = index ; i < numReq ; i++)
-                {
-			{
-                                total = total + abs(nums[i]-initial);
-                                initial = nums[i];
-                        }
-                }
-                total = total + abs(size-nums[i-1]-1);
-                initial = size - 1;
-
-                for (i = index-1 ; i >= 0 ; i--)
-                {
-                        total = total + abs(nums[i]-initial);
-                        initial = nums[i];
-                }
+            total = total + abs(nums[i] - initial);
+            initial = nums[i];
         }
-	else
+    }
+    else
+    {
+        for (i = index - 1; i >= 0; i--)
         {
-                for (i = index-1 ; i>=0 ; i--)
-                {
-                        total = total + abs(nums[i]-initial);
-                        initial = nums[i];
-                }
-                total = total + abs(nums[i+1] - 0);
-                initial = 0;
-
-                for (i = index ; i < numReq ; i++)
-                {
-                        total = total + abs(nums[i]-initial);
-                        initial = nums[i];
-                }
+            total = total + abs(nums[i] - initial);
+            initial = nums[i];
         }
-        printf("Total movement is %d", total);
+
+        for (i = index; i < numReq; i++)
+        {
+            total = total + abs(nums[i] - initial);
+            initial = nums[i];
+        }
+    }
+
+    printf("Total movement is %d", total);
+
+    FILE *ptr = fopen("C:\\Users\\hp\\Desktop\\scan.txt", "w");
+    fprintf(ptr, "Total movement is:  %d", total);
+    fclose(ptr);
+
+    return 0;
 }
